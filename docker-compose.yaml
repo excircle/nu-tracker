@@ -5,8 +5,8 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=sqlpass
-      - MYSQL_DATABASE=dva
-      - MYSQL_USER=dva
+      - MYSQL_DATABASE=trackerdb
+      - MYSQL_USER=tracker
       - MYSQL_PASSWORD=sqlpass
     volumes:
       - ./mysql-data:/var/lib/mysql
@@ -14,7 +14,7 @@ services:
     ports:
       - 3306:3306
   frontend:
-    image: dva-ui:latest
+    image: nu-tracker-ui:latest
     tty: true
     stdin_open: true
     restart: always
@@ -23,7 +23,7 @@ services:
     ports:
       - 3000:3000
   api:
-    image: dva-api:latest
+    image: nu-tracker-api:latest
     tty: true
     stdin_open: true
     restart: always
